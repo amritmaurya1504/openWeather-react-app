@@ -1,38 +1,82 @@
-.App {
-  text-align: center;
+/* Navbar */
+
+html{
+    font-size: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 8rem;
+    background-color: #1f1f1f;
+    color: #fff;
+}
+.nav .logo{
+    display: flex;
+    align-items: center;
+}
+.nav .logo h3{
+    font-size: 1.3rem;
+    color: #f05514
+    ;
+}
+.nav .logo h5{
+    margin-left:0.9rem;
+    font-size: 0.7rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nav .search{
+    display: flex;
+}
+.search input{
+    padding: 0.5rem 2rem;
+    width: 100%;
+}
+.search .serchIcon{
+    background-color: #f05514;
+    padding: 0.2rem 1rem;
+}
+.miniNav{
+    display: flex;
+    font-weight: 300;
+    padding: 0px 7rem;
+}
+.miniNav a{
+    font-size: 1rem;
+    font-weight: 500;
+    margin-left: 1rem;
+    margin-top: 0.7rem;
+    line-height: 2rem;
+    color: gray;
+}
+hr{
+    width: 82%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
+@media (max-width : 912px){
+    html{
+        font-size: 90%;
+    }
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@media (max-width : 656px){
+    html{
+        font-size: 80%;
+    }
+    .nav{
+        padding: 0rem 5rem;
+    }
+    .search input{
+        padding: 0.3rem 0.6rem;
+        width: 50%;
+    }
+    .search input::placeholder{
+        font-size: 1rem;
+    }
+}
+@media (max-width: 534px){
+    .nav{
+        padding: 0rem 2rem;
+    }
 }
