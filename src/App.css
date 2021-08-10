@@ -1,82 +1,72 @@
-/* Navbar */
+@import url(https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css);
 
-html{
-    font-size: 100%;
+.small{
+    font-size: 11px;
+    margin-left: 10px;
+    font-weight: 600;
+    color: white;
+    margin-top: 5px;
 }
-
 .nav{
+    color: orangered !important;
+}
+.innerDiv{
+    display: flex;
+}
+.left{
+    flex: 0.4;
+}
+.right{
+    flex: 0.6;
+    padding-left: 20px;
+}
+.tempInfo{
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+}
+.weatherIcon{
+    flex: 1 100%;
+  height: 50%;
+  font-family: weathericons;
+  font-size: 60px;
+}
+.lineOne{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 8rem;
-    background-color: #1f1f1f;
-    color: #fff;
 }
-.nav .logo{
-    display: flex;
-    align-items: center;
-}
-.nav .logo h3{
-    font-size: 1.3rem;
-    color: #f05514
-    ;
-}
-.nav .logo h5{
-    margin-left:0.9rem;
-    font-size: 0.7rem;
+.myDiv{
+    height: 250px;
+    margin-right: 20px;
 }
 
-.nav .search{
-    display: flex;
+@media(max-width : 901px){
+    .myDiv{
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
 }
-.search input{
-    padding: 0.5rem 2rem;
-    width: 100%;
+.moreButton{
+    cursor: pointer;
 }
-.search .serchIcon{
-    background-color: #f05514;
-    padding: 0.2rem 1rem;
+.myDiv{
+    background-color: white;
 }
-.miniNav{
-    display: flex;
-    font-weight: 300;
-    padding: 0px 7rem;
-}
-.miniNav a{
-    font-size: 1rem;
-    font-weight: 500;
-    margin-left: 1rem;
-    margin-top: 0.7rem;
-    line-height: 2rem;
-    color: gray;
-}
-hr{
-    width: 82%;
+.myDivNews{
+    background-color: white;
 }
 
-
-@media (max-width : 912px){
-    html{
-        font-size: 90%;
+@media(max-width:491px){
+    .innerDiv{
+        flex-direction: column;
     }
-}
-@media (max-width : 656px){
-    html{
-        font-size: 80%;
+    .myDiv{
+        height: 430px;
     }
-    .nav{
-        padding: 0rem 5rem;
+    .right{
+        margin-top: 12px;
+        padding-left: 0;
     }
-    .search input{
-        padding: 0.3rem 0.6rem;
-        width: 50%;
-    }
-    .search input::placeholder{
-        font-size: 1rem;
-    }
-}
-@media (max-width: 534px){
-    .nav{
-        padding: 0rem 2rem;
-    }
+    
 }
