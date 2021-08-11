@@ -13,7 +13,7 @@ const TopStories = () => {
 
     useEffect(async () => {
         try {
-            const res = await axios.get("https://newsapi.org/v2/top-headlines?country=in&apiKey=29f4cc4276a14cfebe4a2ee7c47211ea");
+            const res = await axios.get("https://gnews.io/api/v4/top-headlines?&country=in&token=e9c933f627e10607abe21df19bf8c188");
             //// console.log(res.data.articles);
             setNews(res.data.articles);
         } catch (error) {
@@ -32,7 +32,7 @@ const TopStories = () => {
                         <div className="news">
                             <p className="h5 bg-danger text-white p-2">{news.source.name}</p>
                             <p className="h6">{news.title}</p>
-                            <img src={news.urlToImage} className="img-fluid mt-2 mb-2" alt="Sorry Image not available" /><br />
+                            <img src={news.image} className="img-fluid mt-2 mb-2" alt="Sorry Image not available" /><br />
                             <small>{truncate(news.description, 150)}</small>
                             <p className="h6 mt-2">{news.publishedAt}</p>
                             <p className="text-end"><a className="moreButton" target="_blank" href={news.url}>More <ArrowForwardIcon /> </a></p>
