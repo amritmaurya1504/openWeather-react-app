@@ -13,12 +13,9 @@ const TopStories = () => {
 
     useEffect(async () => {
         try {
-            let url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=29f4cc4276a14cfebe4a2ee7c47211ea";
-            let res = await fetch(url);
-            let data = await res.json();
-            
-            // console.log(data.articles);
-            setNews(data.articles);
+            const res = await axios.get("https://newsapi.org/v2/top-headlines?country=in&apiKey=29f4cc4276a14cfebe4a2ee7c47211ea");
+            //// console.log(res.data.articles);
+            setNews(res.data.articles);
         } catch (error) {
             console.log(error);
         }
