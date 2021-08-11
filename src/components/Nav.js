@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom';
 const Nav = () => {
     const data = useSelector(state => state.weatherReducer.weatherData);
     return (
@@ -8,7 +9,7 @@ const Nav = () => {
                 backgroundColor : "#1f1f1f"
             }}>
                 <div class="container-fluid">
-                    <a class="navbar-brand nav" href="#">WeathInfo&deg;c <small className="small">{data.name}, {data.country} {data.temp}&deg;c</small> </a>
+                    <Link class="navbar-brand nav" to="/">WeathInfo&deg;c <small className="small">{data.name}, {data.country} {data.temp}&deg;c</small> </Link>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>

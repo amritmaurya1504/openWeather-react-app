@@ -45,6 +45,14 @@
 .myDiv{
     height: 250px;
     margin-right: 20px;
+    transition: all 0.2s ease-in-out;
+}
+
+.bigDiv{
+    height: 530px;
+    background-color: white;
+    margin-right: 20px;
+    transition: all 0.2s ease-in-out;
 }
 
 @media(max-width : 901px){
@@ -52,6 +60,15 @@
         margin-right: 0;
         margin-bottom: 20px;
     }
+    .bigDiv{
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
+.bottom{
+    flex: 1;
+    padding-left: 0px;
+    margin-top: 20px;
 }
 .moreButton{
     cursor: pointer;
@@ -62,13 +79,19 @@
 .myDivNews{
     background-color: white;
 }
+.link{
+    cursor: pointer;
+}
 
 @media(max-width:491px){
     .innerDiv{
         flex-direction: column;
     }
     .myDiv{
-        height: 430px;
+        height: 440px;
+    }
+    .bigDiv{
+        height: 690px;
     }
     .right{
         margin-top: 12px;
