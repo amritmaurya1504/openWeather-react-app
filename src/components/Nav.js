@@ -8,7 +8,7 @@ const Nav = () => {
                 backgroundColor : "#1f1f1f"
             }}>
                 <div class="container-fluid">
-                    <a class="navbar-brand nav" href="#">WeatherFinder&deg;c <small className="small">{data.name}, {data.country} {data.temp}&deg;c</small> </a>
+                    <a class="navbar-brand nav" href="#">WeathInfo&deg;c <small className="small">{data.name}, {data.country} {data.temp}&deg;c</small> </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>

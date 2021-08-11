@@ -1,7 +1,7 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css);
 
 .small{
-    font-size: 11px;
+    font-size: 10px;
     margin-left: 10px;
     font-weight: 600;
     color: white;
@@ -9,6 +9,12 @@
 }
 .nav{
     color: orangered !important;
+    font-size: 20px;
+}
+@media(max-width : 347px){
+    .nav{
+        font-size: 15px;
+    }
 }
 .innerDiv{
     display: flex;
