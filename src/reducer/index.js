@@ -1,9 +1,10 @@
 import weatherReducer from "./weatherReducer";
+import dailyWeath from "./dailyWeath"
 
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
-    weatherReducer
+   today : weatherReducer , daily : dailyWeath
 })
 
 export default rootReducer;

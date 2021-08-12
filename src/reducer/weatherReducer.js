@@ -1,17 +1,12 @@
-const initialState = {
-    weatherData: []
-}
 
-
-const weatherReducer = (state = initialState, action) => {
+const weatherReducer = (state = [], action) => {
     switch (action.type) {
         case "SET_WEATHER":
             const { data } = action.payload;
-            return {
-                weatherData: data
-            }
+            return data;
         default: return state;
     }
 }
 
 export default weatherReducer;
+

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import "./App.css";
 import DataContainer from "./components/DataContainer";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -12,6 +13,8 @@ import {
 import DailyWeath from "./components/DailyWeath";
 export default function App() {
 
+
+   
     return (
         <>
 

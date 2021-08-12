@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
 import icon from "./cloud.png"
 const Nav = () => {
-    const data = useSelector(state => state.weatherReducer.weatherData);
+    const data = useSelector(state => state.today);
     return (
         <div>
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-3" style={{

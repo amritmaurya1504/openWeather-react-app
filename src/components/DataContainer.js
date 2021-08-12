@@ -2,7 +2,7 @@ import React from 'react'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { setWeatherInfo } from "../actions/index"
+import { setWeatherInfo, setDailyForecast } from "../actions/index"
 import { useDispatch } from 'react-redux';
 import TopStories from './TopStories';
 import { Link } from 'react-router-dom';
@@ -10,32 +10,30 @@ import { Link } from 'react-router-dom';
 const NEWS_KEY = "29f4cc4276a14cfebe4a2ee7c47211ea";
 const DataContainer = () => {
 
-    
+
     const [weather, setWeather] = useState({});
     const [inpSearch, setInpSearch] = useState()
-    const [show , setShow] = useState(false);
-    const [time , setTime] = useState();
-    const dispath = useDispatch();
-
-    
+    const [show, setShow] = useState(false);
+    const [time, setTime] = useState();
+    const dispatch = useDispatch();
 
     useEffect(async () => {
         try {
-            let url = `https://api.openweathermap.org/data/2.5/weather?q=jehanabad&units=metric&appid=58aab3327201016821c56b94f96ac08d`
+            let url = `https://api.openweathermap.org/data/2.5/weather?q=patna&units=metric&appid=58aab3327201016821c56b94f96ac08d`
             let res = await fetch(url);
             let data = await res.json();
 
             // Disturacting array datas
             const { temp, humidity, pressure, feels_like } = data.main;
             const { name } = data;
-            const { country , sunrise , sunset } = data.sys;
-            const { speed , gust } = data.wind;
-            const { main , description , icon } = data.weather[0];
-            const { lon , lat } = data.coord;
+            const { country, sunrise, sunset } = data.sys;
+            const { speed, gust } = data.wind;
+            const { main, description, icon } = data.weather[0];
+            const { lon, lat } = data.coord;
             // console.log(main);
             // const{main : weatherMood} = data.weather[0];
 
-            
+
             let riseSec = sunrise;
             let timeData = new Date(riseSec * 1000);
             let rise = `${timeData.getHours()}:${timeData.getMinutes()}`;
@@ -44,24 +42,31 @@ const DataContainer = () => {
             let set = `${timeDataSec.getHours()}:${timeDataSec.getMinutes()}`;
 
             const myWeatherInfo = {
-                temp, humidity, pressure, name, country, feels_like, speed, main , rise ,set , gust , lon ,lat , description , icon
+                temp, humidity, pressure, name, country, feels_like, speed, main, rise, set, gust, lon, lat, description, icon
             }
-            
+
 
             setWeather(myWeatherInfo);
-            dispath(setWeatherInfo(myWeatherInfo))
+            dispatch(setWeatherInfo(myWeatherInfo));
+
+            dispatch(setDailyForecast());
 
         } catch (error) {
             console.log(error);
         }
 
     }, [])
-     
+
     setInterval(() => {
-        setTime(new Date().toLocaleTimeString() )
+        setTime(new Date().toLocaleTimeString())
     }, 1000);
 
     const getWeather = async () => {
+
+        if(!inpSearch){
+            alert("Please enter location!")
+        }
+
         try {
             let url = `https://api.openweathermap.org/data/2.5/weather?q=${inpSearch}&units=metric&appid=58aab3327201016821c56b94f96ac08d`
             let res = await fetch(url);
@@ -70,14 +75,14 @@ const DataContainer = () => {
             // Disturacting array datas
             const { temp, humidity, pressure, feels_like } = data.main;
             const { name } = data;
-            const { country , sunrise , sunset } = data.sys;
-            const { speed , gust } = data.wind;
-            const { main , description , icon } = data.weather[0];
-            const { lon , lat } = data.coord;
+            const { country, sunrise, sunset } = data.sys;
+            const { speed, gust } = data.wind;
+            const { main, description, icon } = data.weather[0];
+            const { lon, lat } = data.coord;
             // console.log(main);
             // const{main : weatherMood} = data.weather[0];
 
-           
+
 
             let riseSec = sunrise;
             let timeData = new Date(riseSec * 1000);
@@ -87,18 +92,17 @@ const DataContainer = () => {
             let set = `${timeDataSec.getHours()}:${timeDataSec.getMinutes()}`;
 
             const myWeatherInfo = {
-                temp, humidity, pressure, name, country, feels_like, speed, main , rise ,set , gust , lon , lat , description , icon
+                temp, humidity, pressure, name, country, feels_like, speed, main, rise, set, gust, lon, lat, description, icon
             }
 
             setWeather(myWeatherInfo);
             setInpSearch("");
-            dispath(setWeatherInfo(myWeatherInfo))
+            dispatch(setWeatherInfo(myWeatherInfo))
         } catch (error) {
             console.log(error);
         }
 
     }
-
     return (
         <div>
             <div className="container-lg my-3">
@@ -117,7 +121,7 @@ const DataContainer = () => {
                                     <p className="h6 lead text-secondary">{time}</p>
                                     <div className="tempInfo">
                                         <div className="weatherIcon">
-                                        <img src={`http://openweathermap.org/img/wn/${weather.icon}@2x.png`} />
+                                            <img src={`http://openweathermap.org/img/wn/${weather.icon}@2x.png`} />
                                         </div>
                                         <div className="temData">
                                             <h1 className="display-3">{weather.temp}&deg;c</h1>
@@ -149,27 +153,27 @@ const DataContainer = () => {
                                 </div>
                             </div>
                             <div className={show ? "bottom" : "bottom d-none"}>
-                                    <div className="lineOne border-bottom border-1 mb-2">
-                                        <p className="h6">lon : {weather.lon}&deg; lat : {weather.lat}&deg; </p>
-                                    </div>
-                                    <div className="lineOne border-bottom border-1 mb-2">
-                                        <p className="h6 lead">Wind Gust</p>
-                                        <p className="h6">{weather.gust}km/h</p>
-                                    </div>
-                                    <div className="lineOne border-bottom border-1 mb-2">
-                                        <p className="h6 lead">Sunrise</p>
-                                        <p className="h6">{weather.rise}AM</p>
-                                    </div>
-                                    <div className="lineOne border-bottom border-1 mb-2">
-                                        <p className="h6 lead">Sunset</p>
-                                        <p className="h6">{weather.set} PM</p>
-                                    </div>
-                                    <div className="lineOne border-bottom border-1 mb-2">
-                                        <p className="h6 lead">Description</p>
-                                        <p className="h6">{weather.description}<img src={`http://openweathermap.org/img/wn/${weather.icon}.png`} /></p>
-                                    </div>
-                                    <a className="link" onClick={() => setShow(!show)}><p className="h6 text-end mt-4">Less Details <ArrowForwardIcon /> </p></a>
+                                <div className="lineOne border-bottom border-1 mb-2">
+                                    <p className="h6">lon : {weather.lon}&deg; lat : {weather.lat}&deg; </p>
                                 </div>
+                                <div className="lineOne border-bottom border-1 mb-2">
+                                    <p className="h6 lead">Wind Gust</p>
+                                    <p className="h6">{weather.gust}km/h</p>
+                                </div>
+                                <div className="lineOne border-bottom border-1 mb-2">
+                                    <p className="h6 lead">Sunrise</p>
+                                    <p className="h6">{weather.rise}AM</p>
+                                </div>
+                                <div className="lineOne border-bottom border-1 mb-2">
+                                    <p className="h6 lead">Sunset</p>
+                                    <p className="h6">{weather.set} PM</p>
+                                </div>
+                                <div className="lineOne border-bottom border-1 mb-2">
+                                    <p className="h6 lead">Description</p>
+                                    <p className="h6">{weather.description}<img src={`http://openweathermap.org/img/wn/${weather.icon}.png`} /></p>
+                                </div>
+                                <a className="link" onClick={() => setShow(!show)}><p className="h6 text-end mt-4">Less Details <ArrowForwardIcon /> </p></a>
+                            </div>
                         </div>
                     </div>
                     <div className="col-md-12 col-lg-4 shadow myDivNews">
