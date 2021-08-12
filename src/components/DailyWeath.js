@@ -1,12 +1,13 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setDailyForecast } from "../actions/index"
 const DailyWeath = () => {
 
     const [inpSearch, SetInpSearch] = useState();
     const weathData = useSelector(state => state.daily);
-    console.log(weathData);
+    const dispatch = useDispatch();
 
     let weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday"];
 
@@ -44,7 +45,14 @@ const DailyWeath = () => {
     const five = `${dateFive.getDate()}-${dateFive.getMonth()}-${dateFive.getFullYear()}`;
     const dayFive = weekDay[weekFive] + " " + five;
     
-    
+
+    const getData = () => {
+        if(!inpSearch){
+            alert("Please enter location!");
+        }else{
+            dispatch(setDailyForecast(inpSearch));
+        }
+    }
   
 
 
@@ -53,7 +61,7 @@ const DailyWeath = () => {
             <div className="container-lg my-3">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" value={inpSearch} onChange={(e) => SetInpSearch(e.target.value)} placeholder="Search location" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                    <button class="btn btn-success" type="button" id="button-addon2" >Search</button>
+                    <button class="btn btn-success" type="button" id="button-addon2" onClick={getData} >Search</button>
                 </div>
             </div>
             <div className="container-lg my-5">
