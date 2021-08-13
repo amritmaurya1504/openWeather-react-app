@@ -19,7 +19,7 @@ const DataContainer = () => {
 
     useEffect(async () => {
         try {
-            let url = `https://api.openweathermap.org/data/2.5/weather?q=patna&units=metric&appid=58aab3327201016821c56b94f96ac08d`
+            let url = `https://api.openweathermap.org/data/2.5/weather?q=delhi&units=metric&appid=58aab3327201016821c56b94f96ac08d`
             let res = await fetch(url);
             let data = await res.json();
 

@@ -5,11 +5,11 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 const TopStories = () => {
     const [news, setNews] = useState([]);
 
-    
+
     function truncate(string, n) {
         return string?.length > n ? string.substr(0, n - 1) + "....." : string
     }
-    
+
 
     useEffect(async () => {
         try {
@@ -25,7 +25,6 @@ const TopStories = () => {
         <div className="px-2 pt-3">
             <p className="h6 fw-bold">TOP STORIES.</p>
             <hr />
-
             {
                 news.map((news) => {
                     return (
@@ -39,7 +38,7 @@ const TopStories = () => {
                             <hr />
                         </div>
                     )
-                })
+                }).reverse()
             }
         </div>
 

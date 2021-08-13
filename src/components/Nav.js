@@ -25,7 +25,7 @@ const Nav = () => {
                         </ul>
                         <form class="d-flex">
                             <input class="form-control me-2" type="search" placeholder="Search location" aria-label="Search" />
-                            <button class="btn btn-success" type="submit">Search</button>
+                            <button class="btn btn-success">Search</button>
                         </form>
                     </div>
                 </div>
