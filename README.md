@@ -1,3 +1,8 @@
+## Weather Forecast App - 
+This project will shows you current weather and next 5 days weather forecast, and it is fetching its data from openweatherapi, this project also shows top news headlines of india and fetching it's data from newsapi. technology used in this project reactjs, redux, reduxthunk, api, htmlcss, bootstrap
+
+![Test Image 5](https://res.cloudinary.com/amritrajmaurya/image/upload/v1631607421/Screenshot_2021-08-12_230207_d6cg8b.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
