@@ -36,7 +36,7 @@ const Nav = () => {
             }}>
                 <div class="btn-group">
                     <Link to="/" class="btn btn-primary active" data-bs-toggle="tooltip" title="Get Today's Data" data-bs-placement="top" aria-current="page">Today</Link>
-                    <Link to="/daily" class="btn btn-primary" data-bs-toggle="tooltip" title="Get Daily Data" data-bs-placement="bottom">Daily</Link>
+                    <Link to="/daily" class="btn btn-primary" data-bs-toggle="tooltip" title="Get Daily Data" data-bs-placement="bottom">5 Days Forecast</Link>
                 </div>
             </div>
         </div>
