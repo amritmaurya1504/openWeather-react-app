@@ -20,7 +20,7 @@ const Nav = () => {
                                 <Link class="nav-link active" aria-current="page" to="/">Today</Link>
                             </li>
                             <li class="nav-item">
-                                <Link class="nav-link" to="/daily">Daily</Link>
+                                <Link class="nav-link" to="/daily">5 Days Forecast</Link>
                             </li>
                         </ul>
                         <form class="d-flex">
